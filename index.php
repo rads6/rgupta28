@@ -1,45 +1,75 @@
-<?php
-echo"Hello World";
- 
-require 'vendor/autoload.php';
- 
-$s3 = new Aws\S3\S3Client([
-    'version' => 'latest',
-    'region'  => 'us-west-2'
-]);
- 
-#$s3 = $sdk->createS3();
-$result = $s3->listBuckets();
- 
-foreach ($result['Buckets'] as $bucket) {
-    echo $bucket['Name'] . "\n";
-}
- 
-$key = 'switchonarex.png';
-$result = $s3->putObject(array(
-'ACL'=>'public-read',
-'Bucket'=>'raw-rad',
-'Key' => $key,
-'SourceFile'=> '/var/www/html/switchonarex.png'
-));
-$url=$result['ObjectURL'];
-echo $url;
- 
-?>
- 
-<!DOCTYPE html>
-<form action="s3test.php">
- 
-<html>
+
+
+
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Welcome to Radhika Application.... Login to continue</title>
+</head>
 <body>
- 
- 
-<input type="submit" value="S3test">
-</form>
- 
-<form action="dbtest.php">
-<input type="submit" value="dbtest">
+<form action="dbtest.php" method="post">
+    <p>
+        <label for="userid">User Name:</label>
+        <input type="text" name="userid" id="userid">
+    </p>
+    <p>
+        <label for="password">Password:</label>
+        <input type="text" name="password" id="password">
+    </p>
+    <p>
+        <label for="account">Account:</label>
+        <input type="text" name="email" id="account">
+    </p>
+    <input type="submit" value="Submit">
 </form>
 </body>
 </html>
+
+<?php
+session_start();
+
+require 'vendor/autoload.php';
+
+
+$client = new Aws\Rds\RdsClient([
+  'region'            => 'us-west-2',
+    'version'           => 'latest'
+]);
+ 
+
+$result = $client->describeDBInstances([
+    'DBInstanceIdentifier' => 'rg-db'
+]);
+
+
+$endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
+echo $endpoint . "\n";
+
+$link = mysqli_connect($endpoint,"controller1","radhika6","school") or die("Error " . mysqli_error($link));
+
+/* check connection */
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+
+
+$sql = "CREATE TABLE login
+(
+userid VARCHAR(255),
+password VARCHAR(30),
+account VARCHAR(20)
+)";
+$link->query($sql);
+$sql2 = "INSERT INTO `login` (`userid`,`password`,`account`) VALUES ('rgupta28@hawk.iit.edu','radhika','controller'),('jhajek@iit.edu','ilovebunnies','user'),('any@iit.edu','iit','user')";
+if ($link->query($sql2) === TRUE) {
+echo "Data inserted successfully";
+} else {
+echo "Error creating database: " . $link->error;
+}
+
+?>
+
+
  

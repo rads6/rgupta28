@@ -18,7 +18,7 @@ foreach ($result['Buckets'] as $bucket) {
 $key = 'switchonarex.png';
 $result = $s3->putObject(array(
 'ACL'=>'public-read',
-'Bucket'=>'raw-rads',
+'Bucket'=>'raw-rad',
 'Key' => $key,
 'SourceFile'=> '/var/www/html/switchonarex.png'
 ));
