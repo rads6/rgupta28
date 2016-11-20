@@ -8,7 +8,7 @@
 <title>Welcome to Radhika Application.... Login to continue</title>
 </head>
 <body>
-<form action="dbtest.php" method="post">
+<form action="welcome.php" method="post">
     <p>
         <label for="userid">User Name:</label>
         <input type="text" name="userid" id="userid">
