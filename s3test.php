@@ -32,7 +32,7 @@ echo $url;
 <body>
  
 <h2>Hello</h2>
-<img src="https://s3-us-west-2.amazonaws.com/raw-rads/switchonarex.png" alt="IIT">
+<img src='$url' alt="IIT">
  
 </body>
 </html>
