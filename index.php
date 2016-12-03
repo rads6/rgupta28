@@ -1,25 +1,30 @@
 
 
-
-
 <html lang="en">
-<head>
+<head style:text-align=center;>
 <meta charset="UTF-8">
-<title>Welcome to Radhika Application.... Login to continue</title>
+<H1>Welcome to Radhika Application.... Login to continue</H1>
+
 </head>
+
+<style type="text/css">
+body{
+background:url('https://s3-us-west-2.amazonaws.com/raw-rad/cloud.jpg');
+}
+</style>
 <body>
 <form action="welcome.php" method="post">
     <p>
-        <label for="userid">User Name:</label>
-        <input type="text" name="userid" id="userid">
+        <label for="username">User Name:</label>
+        <input type="text" name="username" id="username">
     </p>
     <p>
         <label for="password">Password:</label>
         <input type="text" name="password" id="password">
     </p>
     <p>
-        <label for="account">Account:</label>
-        <input type="text" name="email" id="account">
+        <label for="account">Account Type:</label>
+        <input type="text" name="account" id="account">
     </p>
     <input type="submit" value="Submit">
 </form>
@@ -72,4 +77,3 @@ echo "Error creating database: " . $link->error;
 ?>
 
 
- 
