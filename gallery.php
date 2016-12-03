@@ -1,41 +1,44 @@
 <html>
-<head>
-<link href="styles.css" rel="stylesheet" type="text/css">
+<head><H1> Welcome To Radhika's Gallery</H1></head>
+<style type="text/css">
+body{
+background:url('https://s3-us-west-2.amazonaws.com/raw-rad/cloud.jpg');
+}
 
-</head>
-<body>
-<br>
+form{
+width: 400px;
+margin:0 auto 0 auto;
 
-<div style="width:400px;">
-<div style="float: left; width: 130px">
+}
+</style>
 
+<div style="float: center; width:400x; text-align: center;">
 <form action="upload.php">
 <button>Upload</button>
 </form>
 </div>
 
-<div style="float: right; width: 225px">
+<div style="float: left; width:400px;">
+<form action="index.php">
+<button>logout</button>
+</form>
+</div>
+</div>
+
+<div style="float:left ; width: 400px">
+
 <form action="admin.php">
-<button>Admin Page</button>
+<button>admin</button>
 </form>
 </div>
-</div>
 
-<div style="float: center; width: 225px">
-
-<form action="logout.php">
-<button>Logout</button>
-</form>
-</div>
-</body>
-</html>
 
 
 <?php
 
 session_start();
 
-echo " <b>Welcome to your Gallery <b> " .  $_SESSION['userid'];
+echo " <b>Hi " .  $_SESSION['userid'];
 $email = $_SESSION['email'];
 //echo "\n<br>" . md5($email) . "<br>";
 
