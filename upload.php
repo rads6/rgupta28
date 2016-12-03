@@ -1,7 +1,20 @@
 <html>
 <head><title>Main table created </title></head>
+<html>
+
+<style type="text/css">
+body{
+background:url('https://s3-us-west-2.amazonaws.com/raw-rad/cloud.jpg');
+}
+
+form{
+width: 400px;
+margin:0 auto 0 auto;
+
+}
+</style>
 <body>
-<h1> World</h1>
+<h1> Please upload your files here</h1>
 
 
 <form enctype="multipart/form-data" action="uploader.php" method="POST">

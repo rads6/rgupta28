@@ -1,5 +1,16 @@
+<html>
+<head><H1> Check if your file is uploaded</H1></head>
+<style type="text/css">
+body{
+background:url('https://s3-us-west-2.amazonaws.com/raw-rad/cloud.jpg');
+}
+
+
+</style>
+</html>
 <?php
 session_start();
+
 require 'vendor/autoload.php';
 $s3 = new Aws\S3\S3Client([
  'version' => 'latest',
@@ -7,7 +18,7 @@ $s3 = new Aws\S3\S3Client([
 ]);
 // have to hard code this here because index.php doesn't exist
 $_SESSION['email']=$_SESSION['userid'];
-echo "\n Welcome to Uploader Page \n" . $_SESSION['email'] ."\n<br>";
+echo "\n check errors if your file not uploaded \n" . $_SESSION['email'] ."\n<br>";
 // To upload the file and giving temporary name.
 $uploaddir = '/tmp/';
 $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
